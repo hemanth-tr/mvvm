@@ -8,8 +8,16 @@
         xmlns:vm="clr-namespace:ModelViewViewModel.ViewModels"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="450" Width="400">
-    <StackPanel>
-        <uc:TodoControl />
-    </StackPanel>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <uc:NavigationControl Grid.Column="0" />
+        <uc:MainViewControl Grid.Column="1" />
+
+    </Grid>
 </Window>

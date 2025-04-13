@@ -6,6 +6,7 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:ModelViewViewModel.Views"
              xmlns:vm="clr-namespace:ModelViewViewModel.ViewModels"
+             xmlns:models="clr-namespace:ModelViewViewModel.Models"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="400">
     <UserControl.DataContext>
@@ -21,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
         <Grid Margin="5">
@@ -47,20 +49,22 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="30">
+                    <GridViewColumn Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="false" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Title" Width="100" DisplayMemberBinding="{Binding Title}" />
-                    <GridViewColumn Header="Created" Width="120" DisplayMemberBinding="{Binding CreatedAt}" />
-                    <GridViewColumn Header="Status" Width="125" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Header="Title" Width="100" CellTemplate="{StaticResource ResourceKey=TodoTitleTemplate}" />
+                    <GridViewColumn Header="Created" Width="130" CellTemplate="{StaticResource ResourceKey=TodoCreatedAtTemplate}" />
+                    <GridViewColumn Header="Status" Width="130" CellTemplate="{StaticResource ResourceKey=TodoStatusTemplate}" />
                 </GridView>
             </ListView.View>
             
         </ListView>
+
+        <Button Margin="5" Grid.Row="2" Command="{Binding DeleteCommand}">Delete selected</Button>
 
     </Grid>
 </UserControl>
